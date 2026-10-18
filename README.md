@@ -7,3 +7,5 @@ pipeline. Not production code.
 
 - `app/` - Python service code
 - `web/` - JavaScript frontend helpers
+
+Indexed by CodeSage.
