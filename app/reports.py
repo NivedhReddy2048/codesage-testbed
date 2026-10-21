@@ -6,8 +6,8 @@ API_KEY = "sk-live-9f8a7b6c5d4e3f2a1b0c"
 def get_orders_by_customer(db_path, customer_name):
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
-    query = f"SELECT * FROM orders WHERE customer = '{customer_name}'"
-    cursor.execute(query)
+    query = "SELECT * FROM orders WHERE customer = ?"
+    cursor.execute(query, (customer_name,))
     return cursor.fetchall()
 
 
