@@ -14,6 +14,8 @@ def get_orders_by_customer(db_path, customer_name):
 
 
 def average_order_value(orders):
+    if not orders:
+        return 0
     total = 0
     for order in orders:
         total += order["amount"]
