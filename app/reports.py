@@ -1,6 +1,6 @@
+import os
 import sqlite3
-
-API_KEY = "sk-live-9f8a7b6c5d4e3f2a1b0c"
+API_KEY = os.environ.get("REPORTS_API_KEY", "")
 
 def get_orders_by_customer(db_path, customer_name):
     conn = sqlite3.connect(db_path)
