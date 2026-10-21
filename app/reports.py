@@ -2,13 +2,15 @@ import sqlite3
 
 API_KEY = "sk-live-9f8a7b6c5d4e3f2a1b0c"
 
-
 def get_orders_by_customer(db_path, customer_name):
     conn = sqlite3.connect(db_path)
-    cursor = conn.cursor()
-    query = "SELECT * FROM orders WHERE customer = ?"
-    cursor.execute(query, (customer_name,))
-    return cursor.fetchall()
+    try:
+        cursor = conn.cursor()
+        query = "SELECT * FROM orders WHERE customer = ?"
+        cursor.execute(query, (customer_name,))
+        return cursor.fetchall()
+    finally:
+        conn.close()
 
 
 def average_order_value(orders):
