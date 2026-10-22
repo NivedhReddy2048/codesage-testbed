@@ -1,11 +1,8 @@
 # Testbed Service
 
-A deliberately small service used to exercise CodeSage's indexing and review
-pipeline. Not production code.
+A small order and user service.
 
 ## Layout
 
 - `app/` - Python service code
 - `web/` - JavaScript frontend helpers
-
-Indexed by CodeSage.

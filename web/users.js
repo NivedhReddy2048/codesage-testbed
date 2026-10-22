@@ -18,8 +18,6 @@ export async function fetchUserOrders(userId, status) {
 }
 
 export async function loadUserSummary(userId) {
-  // BUG (missing await): fetchUser returns a promise, so `user` is a Promise and
-  // user.displayName is undefined rather than the name.
   const user = fetchUser(userId);
   return `${user.displayName} (${userId})`;
 }

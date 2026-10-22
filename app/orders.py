@@ -15,11 +15,7 @@ class OrderRepository:
         return cursor.fetchone()
 
     def search_by_status(self, status):
-        """Find orders with a given status.
-
-        BUG (SQL injection): status is interpolated into the statement instead of
-        being bound as a parameter, unlike every other query in this class.
-        """
+        """Find orders with a given status."""
         query = f"SELECT * FROM orders WHERE status = '{status}'"
         return self.connection.execute(query).fetchall()
 
@@ -31,7 +27,7 @@ class OrderRepository:
         return cursor.fetchone()[0]
 
     def open_connection(self, path):
-        """BUG (resource leak): the connection is never closed on the error path."""
+        """Check that the database at `path` responds."""
         connection = sqlite3.connect(path)
         cursor = connection.execute("SELECT 1")
         if cursor.fetchone() is None:

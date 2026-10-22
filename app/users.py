@@ -38,22 +38,13 @@ class UserRepository:
 
 
 def get_user_display_name(repository, user_id):
-    """Human-readable name for a user id.
-
-    BUG (missing null check): find_by_id returns None for an unknown id, and this
-    dereferences it straight away, so an unknown id raises AttributeError instead of
-    returning a sensible default.
-    """
+    """Human-readable name for a user id."""
     user = repository.find_by_id(user_id)
     return user.display_name
 
 
 def paginate_users(users, page, per_page=10):
-    """Return one page of users.
-
-    BUG (off-by-one): the end index adds per_page to the page number rather than to
-    the start offset, so pages overlap and later pages are the wrong length.
-    """
+    """Return one page of users."""
     start = (page - 1) * per_page
     end = page + per_page
     return users[start:end]
